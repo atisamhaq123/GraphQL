@@ -1,0 +1,17 @@
+query GamesQuery($gameId: ID!){
+  game(id: $gameId) {
+    id
+    title
+    platform
+    reviews {
+      id
+      content
+      rating
+      author {
+        name
+      }
+    }
+}
+}
+
+

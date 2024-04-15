@@ -1,0 +1,60 @@
+tr:hover{
+cursor: pointer;
+background-color: #d1d0d0;
+}
+.table-container {
+    border: 1px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    
+}
+input {
+    width: 90%;
+}
+form {
+    width: 100%;
+    
+}
+
+.btn-custom{
+    display: flex !important;
+    padding: 6px !important;
+}
+.btn-custom:hover{
+    transform: scale(1.2);
+}
+.table {
+    margin-bottom: 5px !important;
+}
+.custom-td{
+    display: flex;
+    justify-content: right;
+}
+.table td, .table th {
+    padding: 0.5rem !important;
+    vertical-align: middle !important;
+}
+.dialog_box{
+    width: 50%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  
+}
+.form_box{
+    position: relative;
+    background-color: rgb(237 237 237);
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    border-radius: 12px; 
+    transition: display 1s;   
+    box-shadow: -4px 0px 17px -6px rgba(0,0,0,0.75);
+-webkit-box-shadow: -4px 0px 17px -6px rgba(0,0,0,0.75);
+-moz-box-shadow: -4px 0px 17px -6px rgba(0,0,0,0.75);
+}
+.close{
+    display: none !important;
+}

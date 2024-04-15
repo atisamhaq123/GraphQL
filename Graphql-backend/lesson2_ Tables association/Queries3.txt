@@ -1,0 +1,11 @@
+query reviewQuery($reviewId: ID!){
+  review(id: $reviewId) {
+    rating
+    game {
+      platform
+      title
+    }
+  }
+}
+
+

@@ -1,0 +1,158 @@
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error">Error :(</div>
+<div class="dialog_box close" #dialog_box>
+  <form (submit)="PerformMutation(entry_id,fields)">
+    <div class="form_box">
+      <div class="form-group row mt-3 mx-1">
+        <label for="entry_id" class="col-sm-3 col-form-label">&nbsp;ID</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="entry_id" disabled [(ngModel)]="entry_id" name="entry_id">
+          <!--   -->
+        </div>
+      </div>
+    <div class="form-group row mt-1 mx-1">
+      <label for="entry1_" class="col-sm-3 col-form-label">&nbsp;{{entry1_header}}</label>
+      <div class="col-sm-9">
+        <!--  -->
+        <input type="text" class="form-control" id="entry1_"  [(ngModel)]="entry1" name="entry1">  
+      </div>   
+    </div>
+    <div class="form-group row mt-1 mx-1">
+      <label for="entry2_" class="col-sm-3 col-form-label">&nbsp;{{entry2_header}}</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="entry2_" [disabled]="editable"  [(ngModel)]="entry2" name="entry2">
+        <!-- -->
+      </div>
+    </div>
+ 
+    <div class="form-group row">
+      <div class="col-sm-5"></div>
+      <div class="col-sm-6 d-flex flex-row-reverse">
+        <button type="submit" class="btn btn-primary mx-2">Save</button>
+        <button class="btn btn-danger" type="button" (click)="closeModal()">Cancel</button>
+      </div>
+      
+    </div>
+  </div>
+  </form>
+</div>
+
+<div class="container">
+  <div class="d-flex mt-3" style="justify-content: space-between;">
+    <h2>Games</h2>
+    <div class="text-right">
+      <button (click)="reveal()" class="btn btn-success">
+      
+        <span *ngIf="show">HIDE query</span>
+        <span *ngIf="!show">REVEAL query</span>
+
+      </button>
+      <div class="reveal-query-box" *ngIf="show">
+        <div>
+          {{ queries}}
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="table-box mt-3">
+    <div class="table-container">
+      <table class="table" *ngIf="games">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Platform</th>
+            <th scope="col">Reviews</th>
+            <th scope="col">Content</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let game of games" (click)="preProcessValues(game.id,'games')">
+            <td>{{ game.id }}</td>
+            <td>{{ game.title }}</td>
+            <td>{{ game.platform }}</td>
+            <td>
+              <span *ngFor="let review of game.reviews">
+                {{ review.rating }},
+              </span>
+            </td>
+            <td>
+              <span *ngFor="let review of game.reviews">
+                {{ review.content }},
+              </span>
+            </td>
+            <td class="custom-td"><button  class="btn btn-danger btn-custom" (click)="deleteMutation($event,game.id,'games')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+              <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+            </svg></button></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="d-flex mt-3" style="background-color: red;"style="align-items: center;">
+    <h2 class="mt-3">Authors</h2>
+    <div class="text-right w-100" >
+      <button class="btn btn-primary" (click)="addAuthor()"> Add Author</button>
+    </div>
+  </div>
+  
+  <div class="table-box mt-3">
+    <div class="table-container">
+      <table class="table" *ngIf="authors">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Verified</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let author of authors" (click)="preProcessValues(author.id,'authors')">
+            <td>{{ author.id }}</td>
+            <td>{{ author.name }}</td>
+            <td>{{ author.verified }}</td>
+            <td class="custom-td"><button  class="btn btn-danger btn-custom" (click)="deleteMutation($event,author.id,'authors')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+              <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+            </svg></button></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <h2 class="mt-3">Reviews</h2>
+  <div class="table-box mt-3">
+    <div class="table-container">
+      <table class="table" *ngIf="reviews">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Content</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let review of reviews" (click)="preProcessValues(review.id,'reviews')">
+            <td>{{ review.id }}</td>
+            <td>{{ review.rating }}</td>
+            <td>{{ review.content }}</td>
+            <td class="custom-td"><button  class="btn btn-danger btn-custom" (click)="deleteMutation($event,review.id,'reviews')"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+              <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+            </svg></button></td>
+            
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

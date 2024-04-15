@@ -1,0 +1,14 @@
+query AuthorQuery($authorId: ID!){
+    author(id: $authorId) {
+      id
+      reviews {
+        rating
+        game {
+          id
+          platform
+        }
+      }
+    }
+}
+
+

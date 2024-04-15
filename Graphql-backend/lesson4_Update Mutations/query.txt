@@ -1,0 +1,16 @@
+mutation updateMutation($id:ID!, $edits: UpdateGameInput){
+  updateGame(edits:$edits,id:$id) {
+    title
+    platform
+  }
+}
+
+global variable>> change edits to new edits where id==1
+{
+  "id": "1",
+  "edits":{
+    "title": "Tears",
+    "platform": ["zomator"]
+  },
+ 
+}

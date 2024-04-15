@@ -1,0 +1,14 @@
+mutation deleteMutation($deleteGameId: ID!){
+  deleteGame(id: $deleteGameId) {
+    id
+    title
+    platform
+  }
+}
+
+
+global variable in apollo sandBox:
+
+{
+  "deleteGameId": "2"
+}

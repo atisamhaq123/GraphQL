@@ -1,0 +1,56 @@
+
+$top-bar-color: #E5E7EB;
+$side-navigation-color: #3E9AA5;
+$primary-button-color: #3E9AA5;
+$background-color: #F3F4F6;
+:root {
+  --text-font-family: 'Barlow', sans-serif;
+}
+
+// Apply styles using the defined variables
+.top-bar {
+  background-color: $top-bar-color;
+}
+
+.side-navigation {
+  background-color: $side-navigation-color;
+}
+
+
+
+body {
+  // background-color: $background-color;
+  width: 100%;
+  // min-width: 1366px;
+  // height: 795px;  
+  // border-radius: 16px;
+  margin: 0;
+  overflow-x: hidden;
+  // aspect-ratio: 1366 / 795;
+  // aspect-ratio: 1366px / 795px;
+  border-radius: 12px;
+  margin: 0;
+
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 4px; /* Set the width of the scrollbar for vertical scrollbar */
+  height: 4px; /* Set the height of the scrollbar for horizontal scrollbar */
+}
+
+/* Define the styles for both horizontal and vertical scrollbar thumbs */
+::-webkit-scrollbar-thumb {
+  background-color: #828282; /* Set the color of the thumb */
+  border-radius: 0; /* Set the border radius of the thumb */
+}
+
+/* Define the styles for both horizontal and vertical scrollbar tracks */
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Set the background color of the track */
+  padding: 0 1px; /* Set the padding of the track */
+}

@@ -1,0 +1,16 @@
+mutation addMutation($game: AddGameInput){
+  addGame(game:$game) {
+    id
+    title
+    platform
+  }
+}
+
+//global variable in apollo sandbox
+
+{
+  "game":{
+    "title": "atisam's game",
+    "platform":["Xbox","PS5"]
+  }
+}
