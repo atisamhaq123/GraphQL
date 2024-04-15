@@ -26,7 +26,7 @@ This repository contains a project focused on learning GraphQL CRUD (Create, Rea
 This project is designed to be beginner-friendly, providing hands-on experience with GraphQL CRUD operations. By working with both frontend and backend components, developers can gain practical knowledge of building GraphQL APIs, defining schemas, performing queries, and executing mutations.
 
 ## Additional Notes
-A notes.docx file has been provided containing questions, answers, and additional concepts related to the GraphQL.
+Notes.docx file has been provided containing questions, answers, and additional concepts related to the GraphQL.
 
 ## Getting Started
 To get started with this project, clone the repository and follow the setup instructions provided in the README file. Make sure to have Node.js and Angular CLI installed on your system. 
